@@ -1,3 +1,7 @@
 .vs/
 GameEngine/bin/
 GameEngine/obj/
+*.user
+GameEngine.Tests/bin/
+GameEngine.Tests/obj/
+packages/
