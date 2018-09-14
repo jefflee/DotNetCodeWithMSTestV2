@@ -10,7 +10,11 @@ namespace GameEngine.Tests
         [TestMethod]
         public void NotAllowNullName()
         {
+            Console.WriteLine("Creating EnemyFactory");
+
             EnemyFactory sut = new EnemyFactory();
+
+            Console.WriteLine("Calling Create method");
 
             Assert.ThrowsException<ArgumentNullException>(
                 () => sut.Create(null)
