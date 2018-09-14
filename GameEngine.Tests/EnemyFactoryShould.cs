@@ -4,6 +4,7 @@ using System;
 namespace GameEngine.Tests
 {
     [TestClass]
+    [TestCategory("Enemy Creation")]
     public class EnemyFactoryShould
     {
         [TestMethod]
