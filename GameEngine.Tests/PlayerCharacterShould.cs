@@ -9,6 +9,7 @@ namespace GameEngine.Tests
     {
         [TestMethod]
         [TestCategory("Player Defaults")]
+        //[Ignore]
         public void BeInexperiencedWhenNew()
         {
             var sut = new PlayerCharacter();
@@ -18,6 +19,7 @@ namespace GameEngine.Tests
 
         [TestMethod]
         [TestCategory("Player Defaults")]
+        //[Ignore("Temporarily disabled for refactoring")]
         public void NotHaveNickNameByDefault()
         {
             var sut = new PlayerCharacter();
