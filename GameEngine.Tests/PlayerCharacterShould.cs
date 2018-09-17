@@ -21,7 +21,8 @@ namespace GameEngine.Tests
         }
 
         [TestMethod]
-        [TestCategory("Player Defaults")]
+        //[TestCategory("Player Defaults")]
+        [PlayerDefaults]
         //[Ignore]
         public void BeInexperiencedWhenNew()
         {
@@ -29,7 +30,8 @@ namespace GameEngine.Tests
         }
 
         [TestMethod]
-        [TestCategory("Player Defaults")]
+        //[TestCategory("Player Defaults")]
+        [PlayerDefaults]
         //[Ignore("Temporarily disabled for refactoring")]
         public void NotHaveNickNameByDefault()
         {
@@ -37,14 +39,16 @@ namespace GameEngine.Tests
         }
 
         [TestMethod]
-        [TestCategory("Player Defaults")]
+        //[TestCategory("Player Defaults")]
+        [PlayerDefaults]
         public void StartWithDefaultHealth()
         {
             Assert.AreEqual(100, _sut.Health);
         }
 
         [TestMethod]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         public void TakeDamage()
         {
             _sut.TakeDamage(1);
@@ -58,7 +62,8 @@ namespace GameEngine.Tests
         [DataRow(100, 1)]
         [DataRow(101, 1)]
         [DataRow(50, 50)]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         public void TakeDamage_DataDriven(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
@@ -84,7 +89,8 @@ namespace GameEngine.Tests
 
         [DataTestMethod]
         [DynamicData(nameof(Damages))]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         public void TakeDamage_DataDriven_FromProperty(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
@@ -107,7 +113,8 @@ namespace GameEngine.Tests
 
         [DataTestMethod]
         [DynamicData(nameof(GetDamages), DynamicDataSourceType.Method)]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         public void TakeDamage_DataDriven_FromMethod(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
@@ -119,7 +126,8 @@ namespace GameEngine.Tests
         [DynamicData(nameof(DamageData.GetDamages),
             typeof(DamageData),
             DynamicDataSourceType.Method)]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         public void TakeDamage_DataDriven_FromClass(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
@@ -130,7 +138,8 @@ namespace GameEngine.Tests
         [DataTestMethod]
         [DynamicData(nameof(ExternalHealthDamageTestData.TestData),
             typeof(ExternalHealthDamageTestData))]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         public void TakeDamage_FromCsv(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
@@ -139,7 +148,8 @@ namespace GameEngine.Tests
         }
 
         [TestMethod]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         public void TakeDamage_NotEqual()
         {
             _sut.TakeDamage(1);
@@ -148,7 +158,8 @@ namespace GameEngine.Tests
         }
 
         [TestMethod]
-        [TestCategory("Player Health")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
         [TestCategory("Another Category")]
         public void IncreaseHealthAfterSleeping()
         {
