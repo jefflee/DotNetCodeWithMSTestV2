@@ -147,6 +147,18 @@ namespace GameEngine.Tests
             Assert.AreEqual(expectedHealth, _sut.Health);
         }
 
+        [DataTestMethod]
+        [CsvDataSource("Damage.csv")]
+        //[TestCategory("Player Health")]
+        [PlayerHealth]
+        public void TakeDamage_UsingAttribute(int damage, int expectedHealth)
+        {
+            _sut.TakeDamage(damage);
+
+            Assert.AreEqual(expectedHealth, _sut.Health);
+        }
+
+
         [TestMethod]
         //[TestCategory("Player Health")]
         [PlayerHealth]
