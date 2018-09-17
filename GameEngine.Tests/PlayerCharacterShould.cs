@@ -154,7 +154,9 @@ namespace GameEngine.Tests
         {
             _sut.Sleep(); // Expect increase between 1 to 100 inclusive
 
-            Assert.IsTrue(_sut.Health >= 101 && _sut.Health <= 200);
+            //Assert.IsTrue(_sut.Health >= 101 && _sut.Health <= 200);
+
+            Assert.That.IsInRange(_sut.Health, 101, 200);
         }
 
         [TestMethod]
@@ -247,14 +249,43 @@ namespace GameEngine.Tests
         public void HaveAtLeastOneKindOfSword()
         {
             Assert.IsTrue(_sut.Weapons.Any(weapon => weapon.Contains("Sword")));
-            // custom assert later
+        }
+
+        [TestMethod]
+        public void HaveAtLeastOneKindOfSword2()
+        {
+            CollectionAssert.That.AtLeastOneItemSatisfies(_sut.Weapons,
+                weapon => weapon.Contains("Sword"));
         }
 
         [TestMethod]
         public void HaveNoEmptyDefaultWeapons()
         {
             Assert.IsFalse(_sut.Weapons.Any(weapon => string.IsNullOrWhiteSpace(weapon)));
-            // custom assert later
+        }
+
+        [TestMethod]
+        public void HaveNoEmptyDefaultWeapons2()
+        {
+            CollectionAssert.That.AllItemsNotNullOrWhitespace(_sut.Weapons);
+        }
+
+        [TestMethod]
+        public void HaveNoEmptyDefaultWeapons3()
+        {
+            CollectionAssert.That.AllItemsSatisfy(_sut.Weapons,
+                  weapon => !string.IsNullOrWhiteSpace(weapon));
+        }
+
+        [TestMethod]
+        public void HaveNoEmptyDefaultWeapons4()
+        {
+            CollectionAssert.That.All(_sut.Weapons, weapon =>
+            {
+                StringAssert.That.NotNullOrWhiteSpace(weapon);
+                Assert.IsTrue(weapon.Length > 5);
+                //etc.
+            });
         }
     }
 }
